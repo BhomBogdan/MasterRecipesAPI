@@ -2,31 +2,34 @@ from bs4 import BeautifulSoup
 
 import requests
 
-#strip function
+# strip function
+
+
 def stripdata(data):
-  data= data.string
-  data= data.strip()
-  return data
+    data = data.string
+    data = data.strip()
+    return data
 
 
-RecipeUrl = 'https://www.allrecipes.com/recipe/22281/black-bottom-cupcakes-ii/'
+RecipeUrl = 'https://www.allrecipes.com/recipe/269096/naturally-sweetened-cranberry-sauce/'
 
 
 allrecipes = requests.get(RecipeUrl)
 
 soup = BeautifulSoup(allrecipes.text, 'lxml')
 
-tittle=soup.h1.string
+tittle = soup.h1.string
 
 URL = RecipeUrl
 
-#Time 
+# Time
 
 TimePrep = soup.find_all(class_="recipe-meta-item-body")[0]
 TimeCook = soup.find_all(class_="recipe-meta-item-body")[1]
 TimeTotal = soup.find_all(class_="recipe-meta-item-body")[2]
 
-TimePrep =  stripdata(TimePrep)
+
+TimePrep = stripdata(TimePrep)
 TimeCook = stripdata(TimeCook)
 TimeTotal = stripdata(TimeTotal)
 
@@ -43,24 +46,34 @@ lenght = soup.find_all(class_="ingredients-item-name")
 ingredient1 = stripdata(ingredient1)
 # Ingredients
 
-i=0
+i = 0
 for i in lenght:
- stripdata(i) 
- print(stripdata(i))
+    stripdata(i)
+    print(stripdata(i))
 
-   
 
 print(URL)
 print
 print(tittle)
-print    
+print
 print(TimePrep)
-print  
+print
 print(TimeCook)
-print  
+print
 print(TimeTotal)
-print  
+print
 print(Servings)
 print
 print(ingredient1)
 
+
+# URL       -DONE
+# Tittle
+# Recipe details (prep,time, etc)
+# ---Prep
+# ---Cook
+# ---Total
+# ---Servings
+# ---Yeld
+# INGREDIENTS (get lenght and after each other separated) check if is vegan or vegetarian
+# Directions  (get lenght and after each other separated)

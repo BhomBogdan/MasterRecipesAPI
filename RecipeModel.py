@@ -27,7 +27,7 @@ class Recipe(db.Model):
             db.session.commit()
 
     def add_recipe_URL(_URL,_tittle,_time):
-            new_recipe = Recipe(URL=_URL,tittle=" ", time=" ")
+            new_recipe = Recipe(URL=_URL,tittle="Null", time=" ")
             db.session.add(new_recipe)
             db.session.commit()
             
